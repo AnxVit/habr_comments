@@ -1,0 +1,21 @@
+type Comment {
+    id: ID!
+    content: String!
+    author: String!
+    parentCommentId: ID
+    replies: [Comment]
+}
+
+input CommentInput {
+    author: String!,
+    content: String!
+}
+
+extend type Mutation {
+    CreateComment(postId: ID, parendId: ID, comment: CommentInput!): CommentResponse
+}
+
+type CommentResponse {
+    message: String!
+    status: Int!
+}
